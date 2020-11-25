@@ -1,0 +1,24 @@
+schema-version: 1.0
+
+
+var:
+  version: 1.15.3
+  port: 2345
+
+port: "{% port %}"
+
+provision:
+  - pkg: git
+  - url:
+      from: https://golang.org/dl/go{% version %}.linux-amd64.tar.gz
+      to: /usr/local
+  - systempath:
+      paths:
+        - /usr/local/go/bin
+        - /root/go/bin
+  - shell: go get github.com/go-delve/delve/cmd/dlv
+
+up:
+  - shell: 
+      cmd: "{{ .templates }}/attach.sh"
+      async: true
