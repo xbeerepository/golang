@@ -19,6 +19,5 @@ provision:
   - shell: go get github.com/go-delve/delve/cmd/dlv
 
 up:
-  - shell: 
-      cmd: "{{ .templates }}/attach.sh"
-      async: true
+  cmd: "{{ .templates }}/attach.sh"
+  async: true
