@@ -4,8 +4,6 @@ schema-version: 1.0
 var:
   version: 1.17.2
   port: 2345
-  app: /app
-  user: default
 
 port: "{% port %}"
 
@@ -23,12 +21,6 @@ provision:
 up:
   cmd: "{{ .templates }}/attach.sh"
   async: true
-
-
-volumes:
-  - app:{% app %}:.
-directory: "{% app %}"
-user: "{% user %}"
 
 
 command:
