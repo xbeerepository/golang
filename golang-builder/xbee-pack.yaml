@@ -1,0 +1,23 @@
+schema-version: 1.0
+
+type: builder
+
+const:
+  bootstrapVersion: 1.13.15
+
+provision:
+  - url:
+      from: https://go.dev/dl/go{% bootstrapVersion %}.linux-amd64.tar.gz
+      todir: /usr/local
+  - url:
+      from: https://github.com/golang/go/archive/refs/tags/go{% version %}.tar.gz
+      todir: /usr/src
+  - systempath: /usr/local/go/bin
+  - env: GOROOT_FINAL=/usr/local/go
+
+
+build:
+  - shell:
+      cmd: ./all.bash
+      directory: /usr/src/go-go{% version %}/src
+  - export: /usr/src/go-go{% version %}
