@@ -11,13 +11,13 @@ provision:
       todir: /usr/local
   - url:
       from: https://github.com/golang/go/archive/refs/tags/go{% version %}.tar.gz
-      todir: /usr/src
+      todir: "{% xbeeSrc %}"
   - systempath: /usr/local/go/bin
   - env: GOROOT_FINAL=/usr/local/go
-
+  - folder: "{% xbeeOut %}/usr/local/go"
 
 build:
   - shell:
       cmd: ./all.bash
-      directory: /usr/src/go-go{% version %}/src
-  - export: /usr/src/go-go{% version %}
+      directory: "{% xbeeSrc %}/go-go{% version %}/src"
+  - shell: cp -r {% xbeeSrc %}/go-go{% version %}/* {% xbeeOut %}/usr/local/go

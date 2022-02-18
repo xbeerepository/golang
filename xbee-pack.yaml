@@ -1,24 +1,12 @@
 schema-version: 1.0
 
-builder: ./golang-builder
+dependency: ./golang-builder
 
-var:
+in:
   version: 1.17.6
-#  port: 2345
-
-#port: "{% port %}"
 
 provision:
-  - copy:
-      builder: go-go{% version %}
-      todir: /usr/local/go
   - systempath: /usr/local/go/bin
-#  - shell: go install github.com/go-delve/delve/cmd/dlv@latest
-
-# up:
-#   cmd: "{{ .templates }}/attach.sh"
-#   async: true
-
 
 command:
   go: go {{ .args }}
