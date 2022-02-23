@@ -21,3 +21,9 @@ build:
       cmd: ./all.bash
       directory: "{% xbeeSrc %}/go-go{% version %}/src"
   - shell: cp -r {% xbeeSrc %}/go-go{% version %}/* {% xbeeOut %}/usr/local/go
+
+
+# if [ -f /opt/xbee/xbeeagent.pid ]; then
+#   pid=`cat /opt/xbee/xbeeagent.pid`
+#   /root/go/bin/dlv --listen=:{{ .pack.port }} --headless=true --api-version=2 attach $pid
+# fi
