@@ -2,7 +2,7 @@ schema-version: 1.0
 
 dependency: ./golang-builder
 
-in:
+var:
   version: 1.20.1
 
 provision:

@@ -5,26 +5,26 @@ type: builder
 const:
   bootstrapVersion: 1.17.13
 
-in:
+var:
   version:
 
 
 provision:
   - url:
-      from: https://go.dev/dl/go{% bootstrapVersion %}.linux-amd64.tar.gz
+      from: https://go.dev/dl/go{{ .bootstrapVersion }}.linux-amd64.tar.gz
       todir: /usr/local
   - url:
-      from: https://github.com/golang/go/archive/refs/tags/go{% version %}.tar.gz
-      todir: "{% xbeeSrc %}"
+      from: https://github.com/golang/go/archive/refs/tags/go{{ .version }}.tar.gz
+      todir: "{{ .xbeeSrc }}"
   - systempath: /usr/local/go/bin
   - env: GOROOT_FINAL=/usr/local/go
-  - folder: "{% xbeeOut %}/usr/local/go"
+  - folder: "{{ .xbeeOut }}/usr/local/go"
 
 build:
   - shell:
       cmd: ./all.bash
-      directory: "{% xbeeSrc %}/go-go{% version %}/src"
-  - shell: cp -r {% xbeeSrc %}/go-go{% version %}/* {% xbeeOut %}/usr/local/go
+      directory: "{{ .xbeeSrc }}/go-go{{ .version }}/src"
+  - shell: cp -r {{ .xbeeSrc }}/go-go{{ .version }}/* {{ .xbeeOut }}/usr/local/go
 
 
 # if [ -f /opt/xbee/xbeeagent.pid ]; then
