@@ -9,5 +9,5 @@ provision:
   - systempath: /usr/local/go/bin
 
 command:
-  go: go {{ .args }}
-  gofmt: gofmt {{ .args }}
+  go: go
+  gofmt: gofmt
