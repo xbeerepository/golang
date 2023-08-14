@@ -1,6 +1,6 @@
 schema-version: 1.0
 
-dependency: ./golang-builder
+builder: ./golang-builder
 
 var:
   version: 1.20.1
