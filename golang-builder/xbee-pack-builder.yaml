@@ -1,20 +1,14 @@
 schema-version: 1.0
 
-type: builder
-
 const:
   bootstrapVersion: 1.17.13
-
-var:
-  version:
-
 
 provision:
   - url:
       from: https://go.dev/dl/go{{ .bootstrapVersion }}.linux-amd64.tar.gz
       todir: /usr/local
   - url:
-      from: https://github.com/golang/go/archive/refs/tags/go{{ .version }}.tar.gz
+      from: https://github.com/golang/go/archive/refs/tags/go{{ .xbee.version }}.tar.gz
       todir: "{{ .xbee.src }}"
   - systempath: /usr/local/go/bin
   - env: GOROOT_FINAL=/usr/local/go
@@ -23,8 +17,8 @@ provision:
 build:
   - shell:
       cmd: ./all.bash
-      directory: "{{ .xbee.src }}/go-go{{ .version }}/src"
-  - shell: cp -r {{ .xbee.src }}/go-go{{ .version }}/* {{ .xbee.out }}/usr/local/go
+      directory: "{{ .xbee.src }}/go-go{{ .xbee.version }}/src"
+  - shell: cp -r {{ .xbee.src }}/go-go{{ .xbee.version }}/* {{ .xbee.out }}/usr/local/go
 
 
 # if [ -f /opt/xbee/xbeeagent.pid ]; then
