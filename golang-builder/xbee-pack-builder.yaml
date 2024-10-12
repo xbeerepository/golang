@@ -1,7 +1,7 @@
 schema-version: 1.0
 
 const:
-  bootstrapVersion: 1.17.13
+  bootstrapVersion: 1.20.6
 
 provision:
   - url:

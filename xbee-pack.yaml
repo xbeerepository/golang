@@ -4,7 +4,7 @@ builder: ./golang-builder
 
 var:
   xbee:
-    version: 1.21.1
+    version: 1.23.2
 
 provision:
   - systempath: /usr/local/go/bin
